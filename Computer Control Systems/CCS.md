@@ -24,10 +24,8 @@ $$
 
 $$
 \begin{cases}
-\gamma(t) = L^{-1}
-\left\{[[sI - A]^{-1}BU(s)]
-\right\}\\
-\Phi(t) = L^{-1}\left\{[sI - A]^{-1}\right\}
+\gamma(t) = L^{-1}[[sI - A]^{-1}BU(s)]]\\
+\Phi(t) = L^{-1}[[sI - A]^{-1}]
 \end{cases}
 $$
 
@@ -58,10 +56,7 @@ X(k+1) = \Phi(T)X(k) + \Theta(T)U(k)
 $$
 
 $$
-\begin{cases}\Phi(t) = L^{-1}
-\left\{
-[sI - A]^{-1}
-\right\}_{t=T}\\ 
+\begin{cases}\Phi(t) = L^{-1}[[sI - A]^{-1}]_{t=T}\\ 
 \Theta(T) = \int_0^T\Phi(\tau)d\tau B\end{cases}  
 $$
 
