@@ -24,7 +24,9 @@ $$
 
 $$
 \begin{cases}
-\gamma(t) = L^{-1}\left\{[[sI - A]^{-1}BU(s)]\right\}\\
+\gamma(t) = L^{-1}
+\left\{[[sI - A]^{-1}BU(s)]
+\right\}\\
 \Phi(t) = L^{-1}\left\{[sI - A]^{-1}\right\}
 \end{cases}
 $$
@@ -56,7 +58,10 @@ X(k+1) = \Phi(T)X(k) + \Theta(T)U(k)
 $$
 
 $$
-\begin{cases}\Phi(t) = L^{-1}\left\{[sI - A]^{-1}\right\}_{t=T}\\ 
+\begin{cases}\Phi(t) = L^{-1}
+\left\{
+[sI - A]^{-1}
+\right\}_{t=T}\\ 
 \Theta(T) = \int_0^T\Phi(\tau)d\tau B\end{cases}  
 $$
 
@@ -94,9 +99,6 @@ $$
 $$
 X(k)=A^kX(0)+\sum_{i=0}^{k-1}A^{(k-i-1)}BU(i)
 $$
-
-
-
 
 # 5. Similarity Transformation
 
@@ -164,7 +166,11 @@ $$
 $$
 B_c=\left[
 \begin{matrix}
- 0\\0\\\vdots\\0\\1
+0\\
+0\\
+\vdots\\
+0\\
+1
 \end{matrix}
 \right]
 $$
