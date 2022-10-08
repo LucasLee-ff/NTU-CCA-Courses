@@ -3,8 +3,10 @@
 ## 1.1 State Space Representation
 
 $$
-\overset{.}{X}(t) = AX(t) + BU(t)  
-\\
+\overset{.}{X}(t) = AX(t) + BU(t)
+$$
+
+$$
 Y(t) = CX(t) + DU(t)
 $$
 
@@ -18,10 +20,11 @@ $$
 
 $$
 X(t) = \Phi(t)X(0) + \gamma(t)
-\\
+$$
+
+$$
 \begin{cases}
-\gamma(t) = L^{-1}\left\{[[sI - A]^{-1}BU(s)]\right\}
-\\
+\gamma(t) = L^{-1}\left\{[[sI - A]^{-1}BU(s)]\right\}\\
 \Phi(t) = L^{-1}\left\{[sI - A]^{-1}\right\}
 \end{cases}
 $$
@@ -31,7 +34,10 @@ $$
 ## 2.1 State Space Representation
 
 $$
-X(k+1) = AX(k) + BU(k)\\
+X(k+1) = AX(k) + BU(k)
+$$
+
+$$
 Y(k) = CX(k) + DU(k)
 $$
 
@@ -43,13 +49,14 @@ $$
 
 ## 2.3 Continuous -> Discrete
 
-given $\Phi(t)$, sampling period  $T$   
+given $\Phi(t)$, sampling period  $T$ 
 
 $$
 X(k+1) = \Phi(T)X(k) + \Theta(T)U(k)
-\\
-\begin{cases}\Phi(t) = L^{-1}\left\{[sI - A]^{-1}\right\}_{t=T}
-\\ 
+$$
+
+$$
+\begin{cases}\Phi(t) = L^{-1}\left\{[sI - A]^{-1}\right\}_{t=T}\\ 
 \Theta(T) = \int_0^T\Phi(\tau)d\tau B\end{cases}  
 $$
 
@@ -77,17 +84,19 @@ given $X(0)$ and $U(i)_{i=0,1,...,k-1}$
 
 $$
 \begin{cases}
-X(1)=AX(0)+BU(0)
-\\
-X(2)=AX(0)+BU(0)
-\\
-\cdots
-\\
+X(1)=AX(0)+BU(0)\\
+X(2)=AX(0)+BU(0)\\
+\cdots\\
 X(k+1)=AX(k)+BU(k)
-\end{cases}
-\\
-X(k)=A^kX(0)+\sum_{i=0}^{k-1}A^{(k-i-1)}BU(i)  
+\end{cases}  
 $$
+
+$$
+X(k)=A^kX(0)+\sum_{i=0}^{k-1}A^{(k-i-1)}BU(i)
+$$
+
+
+
 
 # 5. Similarity Transformation
 
@@ -104,15 +113,14 @@ where,
 
 $$
 \begin{cases}
-A_w = P^{-1}AP
-\\
-B_w = P^{-1}B
-\\
-C_w = CP
-\\
+A_w = P^{-1}AP\\
+B_w = P^{-1}B\\
+C_w = CP\\
 D_w = D
 \end{cases}
-\\
+$$
+
+$$
 det[\lambda I - A_w] = det[\lambda I - A]
 $$
 
