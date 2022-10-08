@@ -3,7 +3,8 @@
 ## 1.1 State Space Representation
 
 $$
-\overset{.}{X}(t) = AX(t) + BU(t)\\
+\overset{.}{X}(t) = AX(t) + BU(t)  
+\\
 Y(t) = CX(t) + DU(t)
 $$
 
@@ -16,8 +17,12 @@ $$
 ## 1.3 Solution of X(t)
 
 $$
-X(t) = \Phi(t)X(0) + \gamma(t)\\\begin{cases}
-\gamma(t) = L^{-1}\left\{[[sI - A]^{-1}BU(s)]\right\}\\\Phi(t) = L^{-1}\left\{[sI - A]^{-1}\right\}
+X(t) = \Phi(t)X(0) + \gamma(t)
+\\
+\begin{cases}
+\gamma(t) = L^{-1}\left\{[[sI - A]^{-1}BU(s)]\right\}
+\\
+\Phi(t) = L^{-1}\left\{[sI - A]^{-1}\right\}
 \end{cases}
 $$
 
@@ -41,8 +46,10 @@ $$
 given $\Phi(t)$, sampling period  $T$   
 
 $$
-X(k+1) = \Phi(T)X(k) + \Theta(T)U(k)\\
-\begin{cases}\Phi(t) = L^{-1}\left\{[sI - A]^{-1}\right\}_{t=T}\\ 
+X(k+1) = \Phi(T)X(k) + \Theta(T)U(k)
+\\
+\begin{cases}\Phi(t) = L^{-1}\left\{[sI - A]^{-1}\right\}_{t=T}
+\\ 
 \Theta(T) = \int_0^T\Phi(\tau)d\tau B\end{cases}  
 $$
 
@@ -70,11 +77,15 @@ given $X(0)$ and $U(i)_{i=0,1,...,k-1}$
 
 $$
 \begin{cases}
-X(1)=AX(0)+BU(0)\
-X(2)=AX(0)+BU(0)\\
-\cdots\\
+X(1)=AX(0)+BU(0)
+\\
+X(2)=AX(0)+BU(0)
+\\
+\cdots
+\\
 X(k+1)=AX(k)+BU(k)
-\end{cases}\\
+\end{cases}
+\\
 X(k)=A^kX(0)+\sum_{i=0}^{k-1}A^{(k-i-1)}BU(i)  
 $$
 
@@ -93,11 +104,15 @@ where,
 
 $$
 \begin{cases}
-A_w = P^{-1}AP\\
-B_w = P^{-1}B\\
-C_w = CP\\
+A_w = P^{-1}AP
+\\
+B_w = P^{-1}B
+\\
+C_w = CP
+\\
 D_w = D
-\end{cases}\\
+\end{cases}
+\\
 det[\lambda I - A_w] = det[\lambda I - A]
 $$
 
@@ -157,7 +172,13 @@ $$
 $$
 W_o=\left[
 \begin{matrix}
-C\\CA\\\vdots\\CA^{n-1}
+C
+\\
+CA
+\\
+\vdots
+\\
+CA^{n-1}
 \end{matrix}
 \right]
 $$
@@ -165,7 +186,13 @@ $$
 $$
 \overset{\sim}{W}_o=\left[
 \begin{matrix}
-C_o\\C_oA_o\\\vdots\\C_oA^{n-1}_o
+C_o
+\\
+C_oA_o
+\\
+\vdots
+\\
+C_oA^{n-1}_o
 \end{matrix}
 \right]
 $$
