@@ -404,6 +404,66 @@ then $W_o^{-1}$ exists, system $A,C$ is **observable**.
 
 ## 10.2 Loss of Controllability/Observability Due to Sampling
 
-​    From 2.3, the discrete system matrices $A_d,\space B_d$ are related to the sampling period $T$. Therefore, $W_c$ and $W_o$ will be affected due to the change of $T$. So do controllability and observability.
+​    From 2.3, the discrete system matrices $A_d,\space B_d$ are related to the sampling period $T$. Therefore, $W_c$ and $W_o$ will be affected **due to the change of $T$**. So do controllability and observability.
 
 # 11. State Feedback Design
+
+    When reference input $r(k)=0$, the plant input $U(k)$:
+
+$$
+\begin{cases}
+U(k) = -KX(k)\\
+K = 
+\left[
+\begin{matrix}
+k_1 & k_2 & \cdots & k_n
+\end{matrix}
+\right ]
+\end{cases}
+$$
+
+the close-loop system:
+
+$$
+X(k+1) = [A - BK]X(k)
+$$
+
+$$
+\alpha(z) = det[zI - A +BK]
+$$
+
+if the desired poles are $p_i = p_1, p_2, \cdots, p_n$,
+
+$$
+\alpha_c(z) = (z-p_1)(z-p_2)\cdots(z-p_n) = z^n +\beta_1z^{n-1} + \cdots + \beta_{n-1}z + \beta_n
+$$
+
+solution of $K$ can be obtained by solving the equation $\alpha(z) \equiv \alpha_c(z)$.
+
+## 11.1 Zeros in State Feedback Control
+
+    State feedback control **does not affect** the positions of zeros.
+
+
+
+# 12.Ackermann's Formula
+
+    Given the desired poles, the characteristic polynomial is:
+
+$$
+\alpha_c(z) = (z-p_1)(z-p_2)\cdots(z-p_n) = z^n +\beta_1z^{n-1} + \cdots + \beta_{n-1}z + \beta_n
+$$
+
+Ackermann's formula for the controller:
+
+$$
+\begin{cases}
+K =
+[\begin{matrix}
+0 & \cdots & 0 & 1
+\end{matrix}]
+W_c^{-1}\alpha_c(A)\\
+\alpha_c(A) = A^n +\beta_1A^{n-1} + \cdots + \beta_{n-1}A + \beta_nI
+\end{cases}
+
+$$
