@@ -3,11 +3,10 @@
 ## 1.1 State Space Representation
 
 $$
-\overset{.}{X}(t) = AX(t) + BU(t)
-$$
-
-$$
+\begin{cases}
+\overset{.}{X}(t) = AX(t) + BU(t)\\
 Y(t) = CX(t) + DU(t)
+\end{cases}
 $$
 
 ## 1.2 Transfer Function
@@ -34,38 +33,39 @@ $$
 ## 2.1 State Space Representation
 
 $$
-X(k+1) = AX(k) + BU(k)
-$$
-
-$$
+\begin{cases}
+X(k+1) = AX(k) + BU(k)\\
 Y(k) = CX(k) + DU(k)
+\end{cases}
 $$
 
 ## 2.2 Transfer Function
 
 $$
-TF = {Y(z)\over U(z)} = (C{[zI -A]}^{-1}B + D) = (C{adj[zI-A]B\over det[zI-A]}) + D  
+TF = {Y(z)\over U(z)} = (C{[zI -A]}^{-1}B + D) = (C{adj[zI-A]B\over det[zI-A]}) + D
 $$
 
 ## 2.3 Continuous -> Discrete
 
-given $\Phi(t)$, sampling period  $T$ 
+​	Given $\Phi(t)$, sampling period  $T$ ,
 
 $$
-X(k+1) = \Phi(T)X(k) + \Theta(T)U(k)
+X(k+1) = A_dX(k) + B_dU(k) = \Phi(T)X(k) + \Theta(T)U(k)
 $$
 
 $$
-\begin{cases}\Phi(t) = L^{-1}[[sI - A]^{-1}]_{t=T}\\ 
-\Theta(T) = \int_0^T\Phi(\tau)d\tau B\end{cases}  
+\begin{cases}\Phi(T) = A_d = L^{-1}[[sI - A]^{-1}]_{t=T}\\ 
+\Theta(T) = B_d = \int_0^T\Phi(\tau)d\tau B\end{cases}
 $$
+
+$X(k) = X(t)_{t=kT} \Rightarrow$ Discrete-time system depend on the sampling period $T$. 
 
 # 3. Poles and Zeros
 
 ## 3.1 Poles
 
-Continuous: $det[sI-A]=0$  
-Discrete: $det[zI-A]=0$  
+1. Continuous: $det[sI-A]=0$  
+2. Discrete: $det[zI-A]=0$  
 
 ## 3.2 Discrete Time Zeros:
 
@@ -78,9 +78,9 @@ det\left[
 \right]=0  
 $$
 
-# 4. Solving the State by Recursion
+# 4. Solution of X(k)
 
-given $X(0)$ and $U(i)_{i=0,1,...,k-1}$    
+​	Given $X(0)$ and $U(i)_{i=0,1,...,k-1}$, we can get $X(k)$ by **recursion**
 
 $$
 \begin{cases}
@@ -97,7 +97,7 @@ $$
 
 # 5. Similarity Transformation
 
-If $X(k) = PW(k) \rightarrow W(k) = P^{-1}X(k)$   
+​	Given a system $A, B, C, D$, and **linear transformation** $P$, $X(k) = PW(k) \rightarrow W(k) = P^{-1}X(k)$ , $W(k)$ is the **new state vector** with the state space model:
 
 $$
 \begin{cases}
@@ -123,14 +123,14 @@ $$
 
 # 6. Canonical Form
 
-for a system $A, B, C, D$ , $det[zI - A]=z^n + a_{n-1}z^{n-1} + ... + a_1z + a_0$
+​	Given a system $A, B, C, D$ , $det[zI - A]=z^n + a_{n-1}z^{n-1} + ... + a_1z + a_0$
 
 ## 6.1 Controllable Canonical Form (CCF)
 
 $$
 W_c=\left[
 \begin{matrix}
-     B & AB & A^2B & ... & A^{n-1}B
+     B & AB & A^2B & \cdots & A^{n-1}B
 \end{matrix}
 \right]
 $$
@@ -138,7 +138,7 @@ $$
 $$
 \overset{\sim}{W}_c=\left[
 \begin{matrix}
- B_c & A_cB_c & A_c^2B_c & ... & A_c^{n-1}B_c
+ B_c & A_cB_c & A_c^2B_c & \cdots & A_c^{n-1}B_c
 \end{matrix}
 \right]
 $$
@@ -233,3 +233,163 @@ the transformation matrix $Q$ to obtain the OCF is:
 $$
 Q = W_o^{-1}\overset{\sim}{W}_o
 $$
+
+## 6.3 Canonical Form from Transfer Function
+
+​	If the $TF$ $G(z)$ is in the following form:
+$$
+G(z) = {b_{n-1}z^{n-1} + \cdots + b_1z + b_0 \over z^n + \cdots + a_1z + a_0}
+$$
+CCF:
+$$
+C_c = 
+\left[
+\begin{matrix}
+b_0 & b_1 & \cdots & b_{n-2} & b_{n-1}
+\end{matrix}
+\right], \space
+A_c, \space B_c\space from \space 6.1,\space
+$$
+OCF:
+$$
+B_o = 
+\left[
+\begin{matrix}
+b_0 & b_1 & \cdots & b_{n-2} & b_{n-1}
+\end{matrix}
+\right],\space
+A_o, \space C_o\space from \space 6.2,\space
+$$
+Since:
+$$
+TF = G(z) = {Y(z)\over U(z)} = C{[zI -A]}^{-1}B + D
+$$
+$D$ can be found directly in the $TF$ , or it is the remainder of the long division.
+
+
+
+# 7. Controller Design
+
+​	The state feedback controller and the observer can be designed separately.
+
+## 7.1 State Feedback Controller
+
+​	Assume that state vector $X(k)$ is available, design a Feedback controller $K$.
+
+## 7.2 Observer
+
+​	The real value of $X(k)$ may hard to be measured, an $Observer$ takes the system input and $U(k)$ and system output $Y(k)$ as input and give the estimation of state vector, denoted as $\overset{\sim}{X}(k)$.
+
+
+
+# 8. Controllability
+
+​	**Controllable** means a system can move from an initial state $X(0)$ to $X(k)$ with a series of input $U$.
+
+​	Equation in 4. can also be denoted as:
+$$
+X(k) = A^kX(0) + W_cU
+$$
+
+$$
+U = W_c^{-1}[X(k) - A^kX(0)]
+$$
+
+where:
+$$
+W_c=\left[
+\begin{matrix}
+     B & AB & A^2B & \cdots & A^{n-1}B
+\end{matrix}
+\right]
+$$
+
+$$
+U=\left[
+\begin{matrix}
+     u(k-1) & u(k-2) & \cdots & u(0)
+\end{matrix}
+\right]^T
+$$
+
+If:
+$$
+rank(W_c) = n \Leftrightarrow \left|W_c\right| \neq 0
+$$
+then $W_c^{-1}$ exists, system $A,B$ is **controllable**.
+
+
+
+# 9. Observability
+
+​	**Observable** means a system's initial state $X(0)$ can be determined based on the knowledge of $Y$ and $U$.
+
+​	Given a system:
+$$
+\begin{cases}
+X(k+1) = AX(k)\\
+Y(k) = CX(k)
+\end{cases}
+$$
+since:
+$$
+\begin{cases}
+Y(0) = CX(0)\\
+Y(1) = CX(1) = CAX(0)\\
+\cdots \\
+Y(k-1) = CA^{k-1}X(0)
+\end{cases}
+$$
+
+$$
+Y = 
+\left[
+\begin{matrix}
+y(0)\\y(1)\\\vdots\\y(k-1)
+\end{matrix}
+\right]
+=
+\left[
+\begin{matrix}
+C\\CA\\\vdots\\CA^{k-1}
+\end{matrix}
+\right]
+X(0)
+= W_oX(0)
+$$
+
+then:
+$$
+X(0) = W_o^{-1}
+\left[
+\begin{matrix}
+y(0)\\y(1)\\\vdots\\y(k-1)
+\end{matrix}
+\right]
+$$
+if:
+$$
+rank(W_o) = n \Leftrightarrow \left|W_o\right| \neq 0
+$$
+then $W_o^{-1}$ exists, system $A,C$ is **observable**.
+
+
+
+# 10. Controllability and Observability
+
+​	**Controllability and observability depends on what are considered as input and output.**
+
+## 10.1 Relations between Controllability, Observability and Transfer Function
+
+1. $TF$ has pole-zero cancellation $\Rightarrow$ either uncontrollable, unobservable, or both.
+
+2. $TF$ has no pole-zero cancellation $\Rightarrow$ can always represented as a controllable and observable system.
+
+## 10.2 Loss of Controllability/Observability Due to Sampling
+
+​	From 2.3, the discrete system matrices $A_d,\space B_d$ are related to the sampling period $T$. Therefore, $W_c$ and $W_o$ will be affected due to the change of $T$. So do controllability and observability.
+
+
+
+# 11. State Feedback Design
+
