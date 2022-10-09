@@ -357,8 +357,7 @@ y(1)\\
 \vdots\\
 y(k-1)
 \end{matrix}
-\right]
-=
+\right] =
 \left[
 \begin{matrix}
 C\\
