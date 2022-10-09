@@ -352,13 +352,19 @@ $$
 Y = 
 \left[
 \begin{matrix}
-y(0)\\y(1)\\\vdots\\y(k-1)
+y(0)\\
+y(1)\\
+\vdots\\
+y(k-1)
 \end{matrix}
 \right]
 =
 \left[
 \begin{matrix}
-C\\CA\\\vdots\\CA^{k-1}
+C\\
+CA\\
+\vdots\\
+CA^{k-1}
 \end{matrix}
 \right]
 X(0)
@@ -371,7 +377,10 @@ $$
 X(0) = W_o^{-1}
 \left[
 \begin{matrix}
-y(0)\\y(1)\\\vdots\\y(k-1)
+y(0)\\
+y(1)\\
+\vdots\\
+y(k-1)
 \end{matrix}
 \right]
 $$
