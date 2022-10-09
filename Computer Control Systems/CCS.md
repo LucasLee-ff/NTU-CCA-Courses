@@ -459,9 +459,11 @@ Ackermann's formula for the controller:
 $$
 \begin{cases}
 K =
-[\begin{matrix}
+\left[
+\begin{matrix}
 0 & \cdots & 0 & 1
-\end{matrix}]
+\end{matrix}
+\right]
 W_c^{-1}\alpha_c(A)\\
 \alpha_c(A) = A^n +\beta_1A^{n-1} + \cdots + \beta_{n-1}A + \beta_nI
 \end{cases}
