@@ -47,7 +47,7 @@ $$
 
 ## 2.3 Continuous -> Discrete
 
-​	Given $\Phi(t)$, sampling period  $T$ ,
+​    Given $\Phi(t)$, sampling period  $T$ ,
 
 $$
 X(k+1) = A_dX(k) + B_dU(k) = \Phi(T)X(k) + \Theta(T)U(k)
@@ -80,7 +80,7 @@ $$
 
 # 4. Solution of X(k)
 
-​	Given $X(0)$ and $U(i)_{i=0,1,...,k-1}$, we can get $X(k)$ by **recursion**
+​    Given $X(0)$ and $U(i)_{i=0,1,...,k-1}$, we can get $X(k)$ by **recursion**
 
 $$
 \begin{cases}
@@ -97,7 +97,7 @@ $$
 
 # 5. Similarity Transformation
 
-​	Given a system $A, B, C, D$, and **linear transformation** $P$, $X(k) = PW(k) \rightarrow W(k) = P^{-1}X(k)$ , $W(k)$ is the **new state vector** with the state space model:
+​    Given a system $A, B, C, D$, and **linear transformation** $P$, $X(k) = PW(k) \rightarrow W(k) = P^{-1}X(k)$ , $W(k)$ is the **new state vector** with the state space model:
 
 $$
 \begin{cases}
@@ -123,7 +123,7 @@ $$
 
 # 6. Canonical Form
 
-​	Given a system $A, B, C, D$ , $det[zI - A]=z^n + a_{n-1}z^{n-1} + ... + a_1z + a_0$
+​    Given a system $A, B, C, D$ , $det[zI - A]=z^n + a_{n-1}z^{n-1} + ... + a_1z + a_0$
 
 ## 6.1 Controllable Canonical Form (CCF)
 
@@ -236,11 +236,12 @@ $$
 
 ## 6.3 Canonical Form from Transfer Function
 
-​	If the $TF$ $G(z)$ is in the following form:
+​    If the $TF$ $G(z)$ is in the following form:
+
 $$
 G(z) = {b_{n-1}z^{n-1} + \cdots + b_1z + b_0 \over z^n + \cdots + a_1z + a_0}
 $$
-CCF:
+
 $$
 C_c = 
 \left[
@@ -250,7 +251,9 @@ b_0 & b_1 & \cdots & b_{n-2} & b_{n-1}
 \right], \space
 A_c, \space B_c\space from \space 6.1,\space
 $$
+
 OCF:
+
 $$
 B_o = 
 \left[
@@ -260,33 +263,33 @@ b_0 & b_1 & \cdots & b_{n-2} & b_{n-1}
 \right],\space
 A_o, \space C_o\space from \space 6.2,\space
 $$
+
 Since:
+
 $$
 TF = G(z) = {Y(z)\over U(z)} = C{[zI -A]}^{-1}B + D
 $$
+
 $D$ can be found directly in the $TF$ , or it is the remainder of the long division.
-
-
 
 # 7. Controller Design
 
-​	The state feedback controller and the observer can be designed separately.
+​    The state feedback controller and the observer can be designed separately.
 
 ## 7.1 State Feedback Controller
 
-​	Assume that state vector $X(k)$ is available, design a Feedback controller $K$.
+​    Assume that state vector $X(k)$ is available, design a Feedback controller $K$.
 
 ## 7.2 Observer
 
-​	The real value of $X(k)$ may hard to be measured, an $Observer$ takes the system input and $U(k)$ and system output $Y(k)$ as input and give the estimation of state vector, denoted as $\overset{\sim}{X}(k)$.
-
-
+​    The real value of $X(k)$ may hard to be measured, an $Observer$ takes the system input and $U(k)$ and system output $Y(k)$ as input and give the estimation of state vector, denoted as $\overset{\sim}{X}(k)$.
 
 # 8. Controllability
 
-​	**Controllable** means a system can move from an initial state $X(0)$ to $X(k)$ with a series of input $U$.
+​    **Controllable** means a system can move from an initial state $X(0)$ to $X(k)$ with a series of input $U$.
 
-​	Equation in 4. can also be denoted as:
+​    Equation in 4. can also be denoted as:
+
 $$
 X(k) = A^kX(0) + W_cU
 $$
@@ -296,6 +299,7 @@ U = W_c^{-1}[X(k) - A^kX(0)]
 $$
 
 where:
+
 $$
 W_c=\left[
 \begin{matrix}
@@ -313,25 +317,28 @@ U=\left[
 $$
 
 If:
+
 $$
 rank(W_c) = n \Leftrightarrow \left|W_c\right| \neq 0
 $$
+
 then $W_c^{-1}$ exists, system $A,B$ is **controllable**.
-
-
 
 # 9. Observability
 
-​	**Observable** means a system's initial state $X(0)$ can be determined based on the knowledge of $Y$ and $U$.
+​    **Observable** means a system's initial state $X(0)$ can be determined based on the knowledge of $Y$ and $U$.
 
-​	Given a system:
+​    Given a system:
+
 $$
 \begin{cases}
 X(k+1) = AX(k)\\
 Y(k) = CX(k)
 \end{cases}
 $$
+
 since:
+
 $$
 \begin{cases}
 Y(0) = CX(0)\\
@@ -359,6 +366,7 @@ X(0)
 $$
 
 then:
+
 $$
 X(0) = W_o^{-1}
 \left[
@@ -367,17 +375,18 @@ y(0)\\y(1)\\\vdots\\y(k-1)
 \end{matrix}
 \right]
 $$
+
 if:
+
 $$
 rank(W_o) = n \Leftrightarrow \left|W_o\right| \neq 0
 $$
+
 then $W_o^{-1}$ exists, system $A,C$ is **observable**.
-
-
 
 # 10. Controllability and Observability
 
-​	**Controllability and observability depends on what are considered as input and output.**
+​    **Controllability and observability depends on what are considered as input and output.**
 
 ## 10.1 Relations between Controllability, Observability and Transfer Function
 
@@ -387,9 +396,6 @@ then $W_o^{-1}$ exists, system $A,C$ is **observable**.
 
 ## 10.2 Loss of Controllability/Observability Due to Sampling
 
-​	From 2.3, the discrete system matrices $A_d,\space B_d$ are related to the sampling period $T$. Therefore, $W_c$ and $W_o$ will be affected due to the change of $T$. So do controllability and observability.
-
-
+​    From 2.3, the discrete system matrices $A_d,\space B_d$ are related to the sampling period $T$. Therefore, $W_c$ and $W_o$ will be affected due to the change of $T$. So do controllability and observability.
 
 # 11. State Feedback Design
-
