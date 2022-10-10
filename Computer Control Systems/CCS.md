@@ -17,6 +17,18 @@ $$
 
 ## 1.3 Solution of X(t)
 
+From 1.1: 
+
+$$
+sX(s) - X(0) = AX(s) + BU(s)
+$$
+
+$$
+\Rightarrow X(s) = [sI-A]^{-1}X(0) + [sI-A]^{-1}BU(s)
+$$
+
+thus:
+
 $$
 X(t) = \Phi(t)X(0) + \gamma(t)
 $$
@@ -127,6 +139,8 @@ $$
 
 ## 6.1 Controllable Canonical Form (CCF)
 
+$W_c$ is the controllability matrix of the original system.
+
 $$
 W_c=\left[
 \begin{matrix}
@@ -177,6 +191,8 @@ P = W_c\overset{\sim}{W}_c^{-1}
 $$
 
 ## 6.2 Observable Canonical Form (OCF)
+
+$W_o$ is the observability matrix of the original system.
 
 $$
 W_o=\left[
@@ -236,7 +252,7 @@ $$
 
 ## 6.3 Canonical Form from Transfer Function
 
-​    If the $TF$ $G(z)$ is in the following form:
+​If the $TF$ $G(z)$ is in the following form (the order of numerator < the order of denominator, and $a_n = 1$):
 
 $$
 G(z) = {b_{n-1}z^{n-1} + \cdots + b_1z + b_0 \over z^n + \cdots + a_1z + a_0}
@@ -260,7 +276,7 @@ B_o =
 \begin{matrix}
 b_0 & b_1 & \cdots & b_{n-2} & b_{n-1}
 \end{matrix}
-\right],\space
+\right]^T,\space
 A_o, \space C_o\space from \space 6.2,\space
 $$
 
@@ -270,7 +286,7 @@ $$
 TF = G(z) = {Y(z)\over U(z)} = C{[zI -A]}^{-1}B + D
 $$
 
-$D$ can be found directly in the $TF$ , or it is the remainder of the long division.
+$D$ can be found directly in the $TF$ , or it is the result of the long division.
 
 # 7. Controller Design
 
@@ -278,11 +294,11 @@ $D$ can be found directly in the $TF$ , or it is the remainder of the long divis
 
 ## 7.1 State Feedback Controller
 
-​    Assume that state vector $X(k)$ is available, design a Feedback controller $K$.
+​    Assume that state vector $X(k)$ is available, a Feedback controller $K$ can **place the poles of the close-loop system arbitrary** if the system is controllable.
 
 ## 7.2 Observer
 
-​    The real value of $X(k)$ may hard to be measured, an $Observer$ takes the system input and $U(k)$ and system output $Y(k)$ as input and give the estimation of state vector, denoted as $\overset{\sim}{X}(k)$.
+​    The real value of $X(k)$ may hard to be measured, an $Observer$ takes the system input and $U(k)$ and system output $Y(k)$ as input and **gives the estimation of state vector**, denoted as $\overset{\sim}{X}(k)$.
 
 # 8. Controllability
 
@@ -295,7 +311,11 @@ X(k) = A^kX(0) + W_cU
 $$
 
 $$
-U = W_c^{-1}[X(k) - A^kX(0)]
+\Rightarrow X(k) - A^kX(0) = W_cU
+$$
+
+$$
+\Rightarrow U = W_c^{-1}[X(k) - A^kX(0)]
 $$
 
 where:
@@ -404,7 +424,7 @@ then $W_o^{-1}$ exists, system $A,C$ is **observable**.
 
 ## 10.2 Loss of Controllability/Observability Due to Sampling
 
-​    From 2.3, the discrete system matrices $A_d,\space B_d$ are related to the sampling period $T$. Therefore, $W_c$ and $W_o$ will be affected **due to the change of $T$**. So do controllability and observability.
+​    From 2.3, the discrete system matrices $A_d,\space B_d$ are related to the sampling period $T$. Therefore, $W_c$ and $W_o$ will be affected **due to the change of $T$**, as will controllability and observability.
 
 # 11. State Feedback Design
 
@@ -438,15 +458,13 @@ $$
 \alpha_c(z) = (z-p_1)(z-p_2)\cdots(z-p_n) = z^n +\beta_1z^{n-1} + \cdots + \beta_{n-1}z + \beta_n
 $$
 
-solution of $K$ can be obtained by solving the equation $\alpha(z) \equiv \alpha_c(z)$.
+the solution of $K$ can be obtained by solving the equation $\alpha(z) \equiv \alpha_c(z)$.
 
 ## 11.1 Zeros in State Feedback Control
 
     State feedback control **does not affect** the positions of zeros.
 
-
-
-# 12.Ackermann's Formula
+# 12. Ackermann's Formula
 
     Given the desired poles, the characteristic polynomial is:
 
@@ -469,3 +487,23 @@ $$
 $$
 \alpha_c(A) = A^n +\beta_1A^{n-1} + \cdots + \beta_{n-1}A + \beta_nI
 $$
+
+
+
+# 13. Deadbeat Control
+
+    Deadbeat control means the close-loop system arrives and remains at rest in at most $n$ samping periods.
+
+if:
+
+$$
+\lambda_i[A-BK] = 0,\space i = 1,\cdots,n
+$$
+
+then all the desire poles are in the origin,
+
+$$
+\Rightarrow \alpha_c(z) = det[zI-A+BK] = z^n
+$$
+
+the solution of $K$ can be otained by **solving the equation $\alpha(z) \equiv \alpha_c(z)$** or using the **Ackermann's formula**.
